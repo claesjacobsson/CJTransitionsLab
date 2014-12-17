@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oAI-aC-tvG">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Inbox-->
+        <scene sceneID="JCN-I4-fmA">
+            <objects>
+                <tableViewController id="kiR-wQ-fF6" customClass="InboxViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vxM-Kz-Hih">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="RaZ-ns-Vml">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RaZ-ns-Vml" id="91K-bn-pQN">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kiR-wQ-fF6" id="NtK-i6-Vp3"/>
+                            <outlet property="delegate" destination="kiR-wQ-fF6" id="MRG-dq-Y6S"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem systemItem="compose" id="Dko-nw-ddl">
+                            <connections>
+                                <action selector="newMail:" destination="kiR-wQ-fF6" id="3Gc-m8-E6K"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Inbox" id="1TR-Ns-HvB"/>
+                    <connections>
+                        <segue destination="UYF-T9-Pgs" kind="presentation" identifier="NewMail" id="6Ty-oJ-wwn"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BmK-3J-lhu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1211" y="452"/>
+        </scene>
+        <!--Mail View Controller-->
+        <scene sceneID="7OO-WC-Uv2">
+            <objects>
+                <viewController id="UYF-T9-Pgs" customClass="MailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CIL-uk-ttG"/>
+                        <viewControllerLayoutGuide type="bottom" id="0as-6n-OEX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wZY-8o-jrh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is an email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXp-2f-e7n">
+                                <rect key="frame" x="241" y="289" width="118" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iKx-w8-xzF">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="New mail" id="zHR-dP-y96">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="oBB-yz-GSU">
+                                            <connections>
+                                                <action selector="done:" destination="UYF-T9-Pgs" id="lfY-RH-4NH"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="iKx-w8-xzF" secondAttribute="trailing" id="N2r-Sd-TQP"/>
+                            <constraint firstAttribute="centerX" secondItem="RXp-2f-e7n" secondAttribute="centerX" id="Wat-Hm-yMh"/>
+                            <constraint firstItem="iKx-w8-xzF" firstAttribute="top" secondItem="wZY-8o-jrh" secondAttribute="topMargin" id="lfj-Ri-scW"/>
+                            <constraint firstAttribute="centerY" secondItem="RXp-2f-e7n" secondAttribute="centerY" id="oJB-hf-SLG"/>
+                            <constraint firstItem="iKx-w8-xzF" firstAttribute="leading" secondItem="wZY-8o-jrh" secondAttribute="leading" id="q8c-d7-xr3"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="navBar" destination="iKx-w8-xzF" id="yOB-Yy-Gwd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SMt-FK-zIQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1983" y="864"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="StL-qV-bPg">
+            <objects>
+                <navigationController toolbarHidden="NO" id="oAI-aC-tvG" sceneMemberID="viewController">
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QTr-hS-Kzn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="8de-wl-POT">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="kiR-wQ-fF6" kind="relationship" relationship="rootViewController" id="W4d-We-n10"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="shB-e7-8Ln" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="452"/>
+        </scene>
+    </scenes>
+</document>
