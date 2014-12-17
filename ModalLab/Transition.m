@@ -1,5 +1,6 @@
 
 #import "Transition.h"
+#import "OverlayPresentationController.m"
 
 static CGFloat const ModalViewTopMargin = 40.0;
 
@@ -7,6 +8,10 @@ static CGFloat const ModalViewTopMargin = 40.0;
 @implementation Transition
 
 #pragma mark - UIViewControllerTransitioningDelegate
+
+- (UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(UIViewController *)presenting sourceViewController:(UIViewController *)source {
+    return [[OverlayPresentationController alloc] initWithPresentedViewController:presented presentingViewController:presenting];
+}
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
     return self;

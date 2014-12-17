@@ -31,13 +31,13 @@
 }
 
 
-- (void)pan:(UIPanGestureRecognizer *)recognizer{
+- (void)pan:(UIPanGestureRecognizer *)recognizer {
     
+    //OverlayInteractiveAnimatedTransitioning *interactiveTransitioning = [self.transitioningDelegate animationControllerForDismissedController:self];
     if (recognizer.state == UIGestureRecognizerStateBegan){
         [self dismissViewControllerAnimated:YES completion:NULL];
         [recognizer setTranslation:CGPointZero inView:self.view.superview];
         [self.transitionManager updateInteractiveTransition:0];
-       // [transitionManager updateInteractiveTransition:0];
         return;
     }
     
@@ -45,7 +45,7 @@
     
     [self.transitionManager updateInteractiveTransition:percentage];
     
-    if (recognizer.state==UIGestureRecognizerStateEnded) {
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
         
         CGFloat velocityY = [recognizer velocityInView:recognizer.view.superview].y;
         BOOL cancel = (velocityY < 0) || (velocityY == 0 && recognizer.view.frame.origin.y < self.view.superview.bounds.size.height/2);

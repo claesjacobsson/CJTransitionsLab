@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Demo. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
-@interface Transition : UIPercentDrivenInteractiveTransition<UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning, UIViewControllerTransitioningDelegate>
+@interface Transition : UIPercentDrivenInteractiveTransition <UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning, UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, readwrite) id <UIViewControllerContextTransitioning> transitionContext;
 
