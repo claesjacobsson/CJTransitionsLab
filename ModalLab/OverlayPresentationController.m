@@ -15,6 +15,7 @@
     return self;
 }
 
+
 - (void)presentationTransitionWillBegin {
     
     // Here, we'll set ourselves up for the presentation
@@ -52,6 +53,7 @@
     }
 }
 
+
 - (void)dismissalTransitionWillBegin {
     
     UIViewController *presentingViewController = [self presentingViewController];
@@ -75,11 +77,13 @@
     }
 }
 
+
 - (CGSize)sizeForChildContentContainer:(id <UIContentContainer>)container withParentContainerSize:(CGSize)parentSize {
     
     return CGSizeMake(floorf(parentSize.width),
                       parentSize.height - ModalViewDistanceFromTop);
 }
+
 
 - (void)containerViewWillLayoutSubviews {
     
@@ -88,12 +92,15 @@
     [[self presentedView] setFrame:[self frameOfPresentedViewInContainerView]];
 }
 
+
 - (BOOL)shouldPresentInFullscreen {
     // This is a full screen presentation
     return YES;
 }
 
+
 - (CGRect)frameOfPresentedViewInContainerView {
+    
     // Return a rect with the same size as -sizeForChildContentContainer:withParentContainerSize:, and right aligned
     CGRect presentedViewFrame = CGRectZero;
     CGRect containerBounds = [[self containerView] bounds];
@@ -106,7 +113,9 @@
     return presentedViewFrame;
 }
 
+
 - (void)prepareDimmingView {
+    
     _dimmingView = [[UIView alloc] init];
     [[self dimmingView] setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.4]];
     [[self dimmingView] setAlpha:0.0];
