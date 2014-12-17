@@ -33,10 +33,13 @@
 }
 
 - (id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator {
-    OverlayAnimatedTransitioning *animationController = [self animationController];
-    [animationController setIsPresentation:NO];
     
-    return animationController;
+    return nil;
+    
+    //    OverlayAnimatedTransitioning *animationController = [self animationController];
+//    [animationController setIsPresentation:NO];
+//    
+//    return animationController;
 }
 
 
@@ -46,7 +49,7 @@
 @implementation OverlayAnimatedTransitioning
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
-    return 3.4;
+    return 0.4;
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
@@ -72,6 +75,7 @@
     UIView *animatingView = [animatingVC view];
     
     CGRect appearedFrame = [transitionContext finalFrameForViewController:animatingVC];
+    
     appearedFrame = CGRectMake(appearedFrame.origin.x, appearedFrame.origin.y + ModalViewDistanceFromTop, appearedFrame.size.width, appearedFrame.size.height - ModalViewDistanceFromTop);
     // Our dismissed frame is the same as our appeared frame, but off the right edge of the container
     CGRect dismissedFrame = appearedFrame;
@@ -86,8 +90,8 @@
     // Animate using the duration from -transitionDuration:
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                           delay:0
-         usingSpringWithDamping:0.7
-          initialSpringVelocity:0.5
+         usingSpringWithDamping:0.8
+          initialSpringVelocity:0.7
                         options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState
                      animations:^{
                          [animatingView setFrame:finalFrame];

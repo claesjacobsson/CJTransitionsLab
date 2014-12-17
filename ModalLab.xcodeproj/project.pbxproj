@@ -20,8 +20,6 @@
 		D78007131A4193840088D488 /* OverlayPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D78007051A4193840088D488 /* OverlayPresentationController.m */; };
 		D78007141A4193840088D488 /* OverlayTransitioner.h in Headers */ = {isa = PBXBuildFile; fileRef = D78007061A4193840088D488 /* OverlayTransitioner.h */; };
 		D78007151A4193840088D488 /* OverlayTransitioner.m in Sources */ = {isa = PBXBuildFile; fileRef = D78007071A4193840088D488 /* OverlayTransitioner.m */; };
-		D780071C1A41A5250088D488 /* Transition.h in Headers */ = {isa = PBXBuildFile; fileRef = D780071A1A41A5250088D488 /* Transition.h */; };
-		D780071D1A41A5250088D488 /* Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = D780071B1A41A5250088D488 /* Transition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,8 +38,6 @@
 		D78007051A4193840088D488 /* OverlayPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OverlayPresentationController.m; path = ModalLab/OverlayPresentationController.m; sourceTree = SOURCE_ROOT; };
 		D78007061A4193840088D488 /* OverlayTransitioner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OverlayTransitioner.h; path = ModalLab/OverlayTransitioner.h; sourceTree = SOURCE_ROOT; };
 		D78007071A4193840088D488 /* OverlayTransitioner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OverlayTransitioner.m; path = ModalLab/OverlayTransitioner.m; sourceTree = SOURCE_ROOT; };
-		D780071A1A41A5250088D488 /* Transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Transition.h; path = ModalLab/Transition.h; sourceTree = SOURCE_ROOT; };
-		D780071B1A41A5250088D488 /* Transition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Transition.m; path = ModalLab/Transition.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +80,6 @@
 				D78007051A4193840088D488 /* OverlayPresentationController.m */,
 				D78007061A4193840088D488 /* OverlayTransitioner.h */,
 				D78007071A4193840088D488 /* OverlayTransitioner.m */,
-				D780071A1A41A5250088D488 /* Transition.h */,
-				D780071B1A41A5250088D488 /* Transition.m */,
 				D7F150EE1A4181D20042159F /* Storyboards */,
 				4FD20592192ADEA80050397C /* Supporting Files */,
 			);
@@ -123,7 +117,6 @@
 				D780070A1A4193840088D488 /* InboxViewController.h in Headers */,
 				D780070E1A4193840088D488 /* MailViewController.h in Headers */,
 				D78007081A4193840088D488 /* AppDelegate.h in Headers */,
-				D780071C1A41A5250088D488 /* Transition.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +190,6 @@
 				D78007091A4193840088D488 /* AppDelegate.m in Sources */,
 				D780070B1A4193840088D488 /* InboxViewController.m in Sources */,
 				D78007131A4193840088D488 /* OverlayPresentationController.m in Sources */,
-				D780071D1A41A5250088D488 /* Transition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

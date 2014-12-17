@@ -1,7 +1,7 @@
 
 #import "MailViewController.h"
 //#import "Transition.h"
-#import "OverlayTransitioner.h"
+//#import "OverlayTransitioner.h"
 
 @interface MailViewController ()
 
@@ -22,15 +22,15 @@
 
 - (void)viewDidLoad {
     
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
-    [self.navBar addGestureRecognizer:pan];
+//    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+//    [self.navBar addGestureRecognizer:pan];
 }
 
 - (IBAction)done:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
+/*
 - (void)pan:(UIPanGestureRecognizer *)recognizer {
     
     //OverlayInteractiveAnimatedTransitioning *interactiveTransitioning = [self.transitioningDelegate animationControllerForDismissedController:self];
@@ -67,7 +67,7 @@
     }
     
 }
-                                              
+   */
 
 
 @end
