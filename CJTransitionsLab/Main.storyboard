@@ -84,13 +84,10 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <connections>
-                        <outlet property="navBar" destination="iKx-w8-xzF" id="yOB-Yy-Gwd"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMt-FK-zIQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1983" y="864"/>
+            <point key="canvasLocation" x="2031" y="-134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="StL-qV-bPg">

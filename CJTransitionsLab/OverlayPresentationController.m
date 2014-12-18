@@ -2,6 +2,14 @@
 #import "OverlayPresentationController.h"
 #import "OverlayTransitioner.h"
 
+static CGFloat const PresentingScaleFactor = 0.9;   // Scale factor of presenting view
+static CGFloat const PresentingVisible = 20.0;      // Visible part of presenting view
+
+
+@interface OverlayPresentationController ()
+@property (nonatomic) UIView *dimmingView;
+@end
+
 
 @implementation OverlayPresentationController
 
@@ -15,10 +23,9 @@
     return self;
 }
 
+
 - (void)presentationTransitionWillBegin {
     
-    // Here, we'll set ourselves up for the presentation
-
     UIView *containerView = [self containerView];
     UIViewController *presentedViewController = [self presentedViewController];
     UIViewController *presentingViewController = [self presentingViewController];
@@ -32,19 +39,16 @@
 
     [containerView insertSubview:[self dimmingView] atIndex:0];
     
-    // Presenting VC (Inbox) offset and scaling
-    CGAffineTransform offSetTransform = CGAffineTransformMakeTranslation(0, 0);
-    offSetTransform = CGAffineTransformScale(offSetTransform, 0.9, 0.9);
+    // Presenting VC (Inbox) scaling
+    CGAffineTransform offSetTransform =  CGAffineTransformMakeScale(PresentingScaleFactor, PresentingScaleFactor);
     
     if ([presentedViewController transitionCoordinator]) {
         [[presentedViewController transitionCoordinator] animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
 
-            // Fade the dimming view to be fully visible
             [[self dimmingView] setAlpha:1.0];
+            presentingViewController.view.transform = offSetTransform;
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
             
-            // Scale down inbox
-            presentingViewController.view.transform = offSetTransform;
         } completion:nil];
     
     } else {
@@ -52,15 +56,15 @@
     }
 }
 
+
 - (void)dismissalTransitionWillBegin {
     
     UIViewController *presentingViewController = [self presentingViewController];
 
-    // Presenting VC (Inbox) offset and scaling
-    CGAffineTransform offSetTransform = CGAffineTransformMakeTranslation(0, 0);
-    offSetTransform = CGAffineTransformScale(offSetTransform, 1.0, 1.0);
+    // Presenting VC (Inbox) scaling
+    CGAffineTransform offSetTransform = CGAffineTransformMakeScale(1.0, 1.0);
     
-    // Here, we'll undo what we did in -presentationTransitionWillBegin. Fade the dimming view to be fully transparent
+    // Undo what we did in -presentationTransitionWillBegin. Fade the dimming view to be fully transparent
 
     if ([[self presentedViewController] transitionCoordinator]) {
         [[[self presentedViewController] transitionCoordinator] animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
@@ -72,14 +76,16 @@
     } else {
         [[self dimmingView] setAlpha:0.0];
         presentingViewController.view.transform = offSetTransform;
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     }
 }
 
+
 - (CGSize)sizeForChildContentContainer:(id <UIContentContainer>)container withParentContainerSize:(CGSize)parentSize {
-    
     return CGSizeMake(floorf(parentSize.width),
-                      parentSize.height - ModalViewDistanceFromTop);
+                      parentSize.height - ((parentSize.height * (1 - PresentingScaleFactor)) / 2) - PresentingVisible);
 }
+
 
 - (void)containerViewWillLayoutSubviews {
     
@@ -88,13 +94,15 @@
     [[self presentedView] setFrame:[self frameOfPresentedViewInContainerView]];
 }
 
+
 - (BOOL)shouldPresentInFullscreen {
-    // This is a full screen presentation
     return YES;
 }
 
+
 - (CGRect)frameOfPresentedViewInContainerView {
-    // Return a rect with the same size as -sizeForChildContentContainer:withParentContainerSize:, and right aligned
+    
+    // Return a rect with the same size as -sizeForChildContentContainer:withParentContainerSize:, and bottom aligned
     CGRect presentedViewFrame = CGRectZero;
     CGRect containerBounds = [[self containerView] bounds];
     
@@ -106,7 +114,9 @@
     return presentedViewFrame;
 }
 
+
 - (void)prepareDimmingView {
+    
     _dimmingView = [[UIView alloc] init];
     [[self dimmingView] setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.4]];
     [[self dimmingView] setAlpha:0.0];
