@@ -16,18 +16,15 @@
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
     OverlayAnimatedTransitioning *animationController = [self animationController];
-    [animationController setIsPresentation:YES];
-    
+    [animationController setIsPresenting:YES];
     return animationController;
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
     OverlayAnimatedTransitioning *animationController = [self animationController];
-    [animationController setIsPresentation:NO];
-    
+    [animationController setIsPresenting:NO];
     return animationController;
 }
-
 
 @end
 
@@ -40,8 +37,6 @@
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
 
-    // Here, we perform the animations necessary for the transition
-
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIView *fromView = [fromVC view];
     UIViewController *toVC   = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
@@ -49,29 +44,26 @@
     
     UIView *containerView = [transitionContext containerView];
     
-    BOOL isPresentation = [self isPresentation];
+    BOOL isPresenting = [self isPresenting];
 
-    if (isPresentation) {
+    if (isPresenting) {
         [containerView addSubview:toView];
     }
     
-    UIViewController *animatingVC = isPresentation? toVC : fromVC;
+    UIViewController *animatingVC = isPresenting? toVC : fromVC;
     UIView *animatingView = [animatingVC view];
     
     CGRect appearedFrame = [transitionContext finalFrameForViewController:animatingVC];
-    appearedFrame = CGRectMake(appearedFrame.origin.x, appearedFrame.origin.y + ModalViewDistanceFromTop, appearedFrame.size.width, appearedFrame.size.height - ModalViewDistanceFromTop);
     
-    // Our dismissed frame is the same as our appeared frame, but off the right edge of the container
+    // Dismissed frame = appeared frame, but off the bottom edge of the container
     CGRect dismissedFrame = appearedFrame;
     dismissedFrame.origin.y += dismissedFrame.size.height;
     
-    
-    CGRect initialFrame = isPresentation ? dismissedFrame : appearedFrame;
-    CGRect finalFrame = isPresentation ? appearedFrame : dismissedFrame;
+    CGRect initialFrame = isPresenting ? dismissedFrame : appearedFrame;
+    CGRect finalFrame = isPresenting ? appearedFrame : dismissedFrame;
     
     [animatingView setFrame:initialFrame];
     
-    // Animate using the duration from -transitionDuration:
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                           delay:0
          usingSpringWithDamping:0.8
@@ -81,11 +73,10 @@
                          [animatingView setFrame:finalFrame];
                     }
                      completion:^(BOOL finished){
-                        // If we're dismissing, remove the presented view from the hierarchy
-                         if (![self isPresentation]) {
+                         if (![self isPresenting]) {
                              [fromView removeFromSuperview];
                          }
-                         // We need to notify the view controller system that the transition has finished
+                         // Notify the view controller system that the transition has finished
                         [transitionContext completeTransition:YES];
                     }];
 }

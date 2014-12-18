@@ -4,10 +4,9 @@
 
 @interface OverlayAnimatedTransitioning : NSObject <UIViewControllerAnimatedTransitioning>
 
-@property (nonatomic) BOOL isPresentation;
+@property (nonatomic) BOOL isPresenting;
 
 @end
-
 
 
 @interface OverlayTransitioningDelegate : NSObject <UIViewControllerTransitioningDelegate>
