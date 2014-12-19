@@ -7,13 +7,15 @@ Based on Apple's sample code 'LookInside' (https://developer.apple.com/library/i
 
 ### Changelog
 
-Dec 18 2014
+Dec 19, 2014
+
+* Renamed transition classes.
+* Added interactive transition - you can now dismiss modal VC by dragging it.
+
+
+Dec 18, 2014
 
 * Initial version.
 
 
-Dev 19 2014
-
-* Renamed transition classes.
-* Added interactive transition - you can now dismiss modal VC by dragging it.
 
