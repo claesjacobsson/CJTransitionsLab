@@ -2,10 +2,16 @@
 #import "InboxViewController.h"
 #import "MailViewController.h"
 
-#import "OverlayTransitioner.h"
+#import "ModalTransition.h"
+
+
+@interface InboxViewController ()
+@property (nonatomic, strong) ModalTransition *animator;
+@end
 
 
 @implementation InboxViewController
+
 
 - (IBAction)newMail:(id)sender {
     [self performSegueWithIdentifier:@"NewMail" sender:self];
@@ -17,9 +23,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([segue.identifier isEqualToString:@"NewMail"]) {
-        self.transitioningDelegate = [[OverlayTransitioningDelegate alloc] init];
+
         MailViewController *mailVC = segue.destinationViewController;
-        mailVC.transitioningDelegate = self.transitioningDelegate;
+        self.animator = [[ModalTransition alloc] initWithModalViewController:mailVC];
+        self.animator.isDraggable = YES;
+        mailVC.transitioningDelegate = self.animator;
     }
 }
 

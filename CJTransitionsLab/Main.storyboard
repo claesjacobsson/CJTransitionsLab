@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oAI-aC-tvG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oAI-aC-tvG">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -35,14 +35,14 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Inbox" id="1TR-Ns-HvB"/>
                     <connections>
-                        <segue destination="UYF-T9-Pgs" kind="presentation" identifier="NewMail" id="6Ty-oJ-wwn"/>
+                        <segue destination="UYF-T9-Pgs" kind="presentation" identifier="NewMail" id="MAu-D2-uQt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BmK-3J-lhu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1211" y="452"/>
         </scene>
-        <!--Mail View Controller-->
+        <!--New Mail-->
         <scene sceneID="7OO-WC-Uv2">
             <objects>
                 <viewController id="UYF-T9-Pgs" customClass="MailViewController" sceneMemberID="viewController">
@@ -57,11 +57,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is an email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXp-2f-e7n">
                                 <rect key="frame" x="241" y="289" width="118" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iKx-w8-xzF">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iKx-w8-xzF">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="New mail" id="zHR-dP-y96">
                                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="oBB-yz-GSU">
@@ -82,12 +82,14 @@
                             <constraint firstItem="iKx-w8-xzF" firstAttribute="leading" secondItem="wZY-8o-jrh" secondAttribute="leading" id="q8c-d7-xr3"/>
                         </constraints>
                     </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <navigationItem key="navigationItem" title="New Mail" id="Tbk-RR-mZZ">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="F8V-Bu-EwP"/>
+                    </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMt-FK-zIQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2031" y="-134"/>
+            <point key="canvasLocation" x="1811" y="-290"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="StL-qV-bPg">
