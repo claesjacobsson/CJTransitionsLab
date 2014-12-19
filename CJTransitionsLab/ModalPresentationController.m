@@ -1,17 +1,12 @@
 
-#import "OverlayPresentationController.h"
-#import "OverlayTransitioner.h"
+#import "ModalPresentationController.h"
+#import "ModalTransition.h"
 
-static CGFloat const PresentingScaleFactor = 0.9;   // Scale factor of presenting view
-static CGFloat const PresentingVisible = 20.0;      // Visible part of presenting view
-
-
-@interface OverlayPresentationController ()
-@property (nonatomic) UIView *dimmingView;
-@end
+CGFloat const PresentingScaleFactor = 0.9;   // Scale factor of presenting view
+CGFloat const PresentingVisiblePoints = 20.0;      // Visible part of presenting view
 
 
-@implementation OverlayPresentationController
+@implementation ModalPresentationController
 
 - (instancetype)initWithPresentedViewController:(UIViewController *)presentedViewController presentingViewController:(UIViewController *)presentingViewController {
     
@@ -31,12 +26,10 @@ static CGFloat const PresentingVisible = 20.0;      // Visible part of presentin
     UIViewController *presentingViewController = [self presentingViewController];
 
     // Make sure the dimming view is the size of the container's bounds, and fully transparent
-
     [[self dimmingView] setFrame:[containerView bounds]];
     [[self dimmingView] setAlpha:0.0];
 
     // Insert the dimming view below everything else
-
     [containerView insertSubview:[self dimmingView] atIndex:0];
     
     // Presenting VC (Inbox) scaling
@@ -68,8 +61,10 @@ static CGFloat const PresentingVisible = 20.0;      // Visible part of presentin
 
     if ([[self presentedViewController] transitionCoordinator]) {
         [[[self presentedViewController] transitionCoordinator] animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-            [[self dimmingView] setAlpha:0.0];
-            presentingViewController.view.transform = offSetTransform;
+            if (!self.dragging) {
+                [[self dimmingView] setAlpha:0.0];
+                presentingViewController.view.transform = offSetTransform;
+            }
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
         } completion:nil];
     
@@ -83,12 +78,11 @@ static CGFloat const PresentingVisible = 20.0;      // Visible part of presentin
 
 - (CGSize)sizeForChildContentContainer:(id <UIContentContainer>)container withParentContainerSize:(CGSize)parentSize {
     return CGSizeMake(floorf(parentSize.width),
-                      parentSize.height - ((parentSize.height * (1 - PresentingScaleFactor)) / 2) - PresentingVisible);
+                      parentSize.height - ((parentSize.height * (1 - PresentingScaleFactor)) / 2) - PresentingVisiblePoints);
 }
 
 
 - (void)containerViewWillLayoutSubviews {
-    
     // Before layout, make sure our dimmingView and presentedView have the correct frame
     [[self dimmingView] setFrame:[[self containerView] bounds]];
     [[self presentedView] setFrame:[self frameOfPresentedViewInContainerView]];
@@ -101,7 +95,6 @@ static CGFloat const PresentingVisible = 20.0;      // Visible part of presentin
 
 
 - (CGRect)frameOfPresentedViewInContainerView {
-    
     // Return a rect with the same size as -sizeForChildContentContainer:withParentContainerSize:, and bottom aligned
     CGRect presentedViewFrame = CGRectZero;
     CGRect containerBounds = [[self containerView] bounds];
@@ -116,7 +109,7 @@ static CGFloat const PresentingVisible = 20.0;      // Visible part of presentin
 
 
 - (void)prepareDimmingView {
-    
+ 
     _dimmingView = [[UIView alloc] init];
     [[self dimmingView] setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.4]];
     [[self dimmingView] setAlpha:0.0];

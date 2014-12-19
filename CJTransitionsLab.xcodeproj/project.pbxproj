@@ -17,10 +17,10 @@
 		D78281531A42DF670063399D /* MailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D78281451A42DF670063399D /* MailViewController.m */; };
 		D78281541A42DF670063399D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D78281461A42DF670063399D /* main.m */; };
 		D78281551A42DF670063399D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D78281471A42DF670063399D /* Main.storyboard */; };
-		D78281561A42DF670063399D /* OverlayPresentationController.h in Headers */ = {isa = PBXBuildFile; fileRef = D78281481A42DF670063399D /* OverlayPresentationController.h */; };
-		D78281571A42DF670063399D /* OverlayPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D78281491A42DF670063399D /* OverlayPresentationController.m */; };
-		D78281581A42DF670063399D /* OverlayTransitioner.h in Headers */ = {isa = PBXBuildFile; fileRef = D782814A1A42DF670063399D /* OverlayTransitioner.h */; };
-		D78281591A42DF670063399D /* OverlayTransitioner.m in Sources */ = {isa = PBXBuildFile; fileRef = D782814B1A42DF670063399D /* OverlayTransitioner.m */; };
+		D78281561A42DF670063399D /* ModalPresentationController.h in Headers */ = {isa = PBXBuildFile; fileRef = D78281481A42DF670063399D /* ModalPresentationController.h */; };
+		D78281571A42DF670063399D /* ModalPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D78281491A42DF670063399D /* ModalPresentationController.m */; };
+		D78281581A42DF670063399D /* ModalTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = D782814A1A42DF670063399D /* ModalTransition.h */; };
+		D78281591A42DF670063399D /* ModalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = D782814B1A42DF670063399D /* ModalTransition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,10 +36,10 @@
 		D78281451A42DF670063399D /* MailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MailViewController.m; path = CJTransitionsLab/MailViewController.m; sourceTree = SOURCE_ROOT; };
 		D78281461A42DF670063399D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CJTransitionsLab/main.m; sourceTree = SOURCE_ROOT; };
 		D78281471A42DF670063399D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = CJTransitionsLab/Main.storyboard; sourceTree = SOURCE_ROOT; };
-		D78281481A42DF670063399D /* OverlayPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OverlayPresentationController.h; path = CJTransitionsLab/OverlayPresentationController.h; sourceTree = SOURCE_ROOT; };
-		D78281491A42DF670063399D /* OverlayPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OverlayPresentationController.m; path = CJTransitionsLab/OverlayPresentationController.m; sourceTree = SOURCE_ROOT; };
-		D782814A1A42DF670063399D /* OverlayTransitioner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OverlayTransitioner.h; path = CJTransitionsLab/OverlayTransitioner.h; sourceTree = SOURCE_ROOT; };
-		D782814B1A42DF670063399D /* OverlayTransitioner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OverlayTransitioner.m; path = CJTransitionsLab/OverlayTransitioner.m; sourceTree = SOURCE_ROOT; };
+		D78281481A42DF670063399D /* ModalPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalPresentationController.h; path = CJTransitionsLab/ModalPresentationController.h; sourceTree = SOURCE_ROOT; };
+		D78281491A42DF670063399D /* ModalPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalPresentationController.m; path = CJTransitionsLab/ModalPresentationController.m; sourceTree = SOURCE_ROOT; };
+		D782814A1A42DF670063399D /* ModalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalTransition.h; path = CJTransitionsLab/ModalTransition.h; sourceTree = SOURCE_ROOT; };
+		D782814B1A42DF670063399D /* ModalTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalTransition.m; path = CJTransitionsLab/ModalTransition.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +56,7 @@
 		4FD20585192ADEA80050397C = {
 			isa = PBXGroup;
 			children = (
-				4FD20591192ADEA80050397C /* ModalLab */,
+				4FD20591192ADEA80050397C /* CJTransitionsLab */,
 				4FD20590192ADEA80050397C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,7 +69,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4FD20591192ADEA80050397C /* ModalLab */ = {
+		4FD20591192ADEA80050397C /* CJTransitionsLab */ = {
 			isa = PBXGroup;
 			children = (
 				D782813E1A42DF670063399D /* AppDelegate.h */,
@@ -78,14 +78,11 @@
 				D78281411A42DF670063399D /* InboxViewController.m */,
 				D78281441A42DF670063399D /* MailViewController.h */,
 				D78281451A42DF670063399D /* MailViewController.m */,
-				D78281481A42DF670063399D /* OverlayPresentationController.h */,
-				D78281491A42DF670063399D /* OverlayPresentationController.m */,
-				D782814A1A42DF670063399D /* OverlayTransitioner.h */,
-				D782814B1A42DF670063399D /* OverlayTransitioner.m */,
+				D75061921A436FA30018217D /* ModalTransition */,
 				D7F150EE1A4181D20042159F /* Storyboards */,
 				4FD20592192ADEA80050397C /* Supporting Files */,
 			);
-			name = ModalLab;
+			name = CJTransitionsLab;
 			path = LookInside;
 			sourceTree = "<group>";
 		};
@@ -97,6 +94,17 @@
 				D74CC6CB1A42DD360044336A /* README.md */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D75061921A436FA30018217D /* ModalTransition */ = {
+			isa = PBXGroup;
+			children = (
+				D78281481A42DF670063399D /* ModalPresentationController.h */,
+				D78281491A42DF670063399D /* ModalPresentationController.m */,
+				D782814A1A42DF670063399D /* ModalTransition.h */,
+				D782814B1A42DF670063399D /* ModalTransition.m */,
+			);
+			name = ModalTransition;
 			sourceTree = "<group>";
 		};
 		D7F150EE1A4181D20042159F /* Storyboards */ = {
@@ -115,8 +123,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D78281581A42DF670063399D /* OverlayTransitioner.h in Headers */,
-				D78281561A42DF670063399D /* OverlayPresentationController.h in Headers */,
+				D78281581A42DF670063399D /* ModalTransition.h in Headers */,
+				D78281561A42DF670063399D /* ModalPresentationController.h in Headers */,
 				D782814E1A42DF670063399D /* InboxViewController.h in Headers */,
 				D78281521A42DF670063399D /* MailViewController.h in Headers */,
 				D782814C1A42DF670063399D /* AppDelegate.h in Headers */,
@@ -190,10 +198,10 @@
 			files = (
 				D78281541A42DF670063399D /* main.m in Sources */,
 				D78281531A42DF670063399D /* MailViewController.m in Sources */,
-				D78281591A42DF670063399D /* OverlayTransitioner.m in Sources */,
+				D78281591A42DF670063399D /* ModalTransition.m in Sources */,
 				D782814D1A42DF670063399D /* AppDelegate.m in Sources */,
 				D782814F1A42DF670063399D /* InboxViewController.m in Sources */,
-				D78281571A42DF670063399D /* OverlayPresentationController.m in Sources */,
+				D78281571A42DF670063399D /* ModalPresentationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
