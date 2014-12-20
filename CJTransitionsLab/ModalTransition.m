@@ -114,12 +114,7 @@
     
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         
-        CGFloat animationRatio = 0;
-        
-//        animationRatio = (location.y - panLocationStart) / (CGRectGetHeight(self.modalController.view.bounds));
-        animationRatio = (location.y - panLocationStart) / (CGRectGetHeight(self.modalController.presentationController.frameOfPresentedViewInContainerView));
-        
-      //  NSLog(@"ration: %f", animationRatio);
+        CGFloat animationRatio = (location.y - panLocationStart) / (CGRectGetHeight(self.modalController.presentationController.frameOfPresentedViewInContainerView));
         
         [self updateInteractiveTransition:animationRatio];
     
@@ -204,7 +199,6 @@
                      } completion:^(BOOL finished) {
                          [transitionContext completeTransition:YES];
                          self.modalController = nil;
-                         
                      }];
     
 }
