@@ -180,8 +180,11 @@
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     ModalPresentationController *presController = (ModalPresentationController *)fromViewController.presentationController;
     
+    CGRect modalFrame = fromViewController.presentationController.frameOfPresentedViewInContainerView;
+    CGFloat topMargin = modalFrame.origin.y;
+    
     CGRect endRect = CGRectMake(0,
-                         CGRectGetHeight(fromViewController.view.frame),
+                         topMargin + CGRectGetHeight(fromViewController.view.frame),
                          CGRectGetWidth(fromViewController.view.frame),
                          CGRectGetHeight(fromViewController.view.frame));
 
