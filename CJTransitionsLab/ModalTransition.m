@@ -114,12 +114,7 @@
     
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         
-        CGFloat animationRatio = 0;
-        
-//        animationRatio = (location.y - panLocationStart) / (CGRectGetHeight(self.modalController.view.bounds));
-        animationRatio = (location.y - panLocationStart) / (CGRectGetHeight(self.modalController.presentationController.frameOfPresentedViewInContainerView));
-        
-      //  NSLog(@"ration: %f", animationRatio);
+        CGFloat animationRatio = (location.y - panLocationStart) / (CGRectGetHeight(self.modalController.presentationController.frameOfPresentedViewInContainerView));
         
         [self updateInteractiveTransition:animationRatio];
     
@@ -167,9 +162,9 @@
     CGFloat topMargin = modalFrame.origin.y;
    
     fromViewController.view.frame = CGRectMake(0,
-                                               (topMargin + CGRectGetHeight(fromViewController.presentationController.frameOfPresentedViewInContainerView) * percentComplete),
-                                               CGRectGetWidth(fromViewController.presentationController.frameOfPresentedViewInContainerView),
-                                               topMargin + CGRectGetHeight(fromViewController.presentationController.frameOfPresentedViewInContainerView));
+                                               (topMargin + CGRectGetHeight(modalFrame) * percentComplete),
+                                               CGRectGetWidth(modalFrame),
+                                               CGRectGetHeight(modalFrame));
     
     //Adjust alpha of presentation controller's dimmingView
     ModalPresentationController *presController = (ModalPresentationController *)fromViewController.presentationController;
@@ -185,8 +180,11 @@
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     ModalPresentationController *presController = (ModalPresentationController *)fromViewController.presentationController;
     
+    CGRect modalFrame = fromViewController.presentationController.frameOfPresentedViewInContainerView;
+    CGFloat topMargin = modalFrame.origin.y;
+    
     CGRect endRect = CGRectMake(0,
-                         CGRectGetHeight(fromViewController.view.frame),
+                         topMargin + CGRectGetHeight(fromViewController.view.frame),
                          CGRectGetWidth(fromViewController.view.frame),
                          CGRectGetHeight(fromViewController.view.frame));
 
@@ -204,7 +202,6 @@
                      } completion:^(BOOL finished) {
                          [transitionContext completeTransition:YES];
                          self.modalController = nil;
-                         
                      }];
     
 }
