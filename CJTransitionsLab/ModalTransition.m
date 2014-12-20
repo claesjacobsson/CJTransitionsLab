@@ -162,9 +162,9 @@
     CGFloat topMargin = modalFrame.origin.y;
    
     fromViewController.view.frame = CGRectMake(0,
-                                               (topMargin + CGRectGetHeight(fromViewController.presentationController.frameOfPresentedViewInContainerView) * percentComplete),
-                                               CGRectGetWidth(fromViewController.presentationController.frameOfPresentedViewInContainerView),
-                                               topMargin + CGRectGetHeight(fromViewController.presentationController.frameOfPresentedViewInContainerView));
+                                               (topMargin + CGRectGetHeight(modalFrame) * percentComplete),
+                                               CGRectGetWidth(modalFrame),
+                                               CGRectGetHeight(modalFrame));
     
     //Adjust alpha of presentation controller's dimmingView
     ModalPresentationController *presController = (ModalPresentationController *)fromViewController.presentationController;
