@@ -40,6 +40,7 @@
 		D78281491A42DF670063399D /* ModalPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalPresentationController.m; path = CJTransitionsLab/ModalPresentationController.m; sourceTree = SOURCE_ROOT; };
 		D782814A1A42DF670063399D /* ModalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalTransition.h; path = CJTransitionsLab/ModalTransition.h; sourceTree = SOURCE_ROOT; };
 		D782814B1A42DF670063399D /* ModalTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalTransition.m; path = CJTransitionsLab/ModalTransition.m; sourceTree = SOURCE_ROOT; };
+		D7A2C2DB1A4790FD00F7DF84 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +93,7 @@
 				D78281421A42DF670063399D /* Info.plist */,
 				D78281461A42DF670063399D /* main.m */,
 				D74CC6CB1A42DD360044336A /* README.md */,
+				D7A2C2DB1A4790FD00F7DF84 /* CHANGELOG.md */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
